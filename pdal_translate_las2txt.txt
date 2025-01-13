@@ -1,0 +1,1 @@
+pdal translate Romsey_SU3521_03082021_nadir_classified.las Romsey_SU3521_03082021_nadir_classified.txt --writers.text.keep_unspecified=false --writers.text.order=X,Y,Z,Classification
