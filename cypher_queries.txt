@@ -1,0 +1,6 @@
+auto: LOAD CSV WITH HEADERS FROM "file:///Romsey_SU3521_03082021_nadir_classified.txt" AS csvLine
+CALL {
+  WITH csvLine
+CREATE (:Point {x: toFloat(csvLine.X), y: toFloat(csvLine.Y), z: toFloat(csvLine.Z), classification: toFloat(csvLine.Classification)})
+} IN TRANSACTIONS OF 10000 ROWS
+
