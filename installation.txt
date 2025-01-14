@@ -2,16 +2,21 @@
 
 ### neo4j Spatial ###
 
-# Install maven 
-
-sudo apt install maven
-
-# Install repo
+# Repo for reference:
 
 https://github.com/neo4j-contrib/spatial.git
 
-# Install with maven
+# Download the latest jar file and copy to the DBs plugin file:
 
-# Add the following to your conf file:
+https://github.com/neo4j-contrib/spatial/releases
+
+# Restart the DB
+
+
+# Add the following to your neo4j.conf file:
 
 	dbms.security.procedures.unrestricted=jwt.security.*,spatial.*
+
+Spatial User Guide:
+
+https://neo4j.com/labs/neo4j-spatial/5/overview/introduction/
