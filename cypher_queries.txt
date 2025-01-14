@@ -1,6 +1,27 @@
-auto: LOAD CSV WITH HEADERS FROM "file:///Romsey_SU3521_03082021_nadir_classified.txt" AS csvLine
+:auto LOAD CSV WITH HEADERS FROM "file:///Romsey_SU3520_03082021_nadir_classified.txt" AS csvLine
 CALL {
   WITH csvLine
 CREATE (:Point {x: toFloat(csvLine.X), y: toFloat(csvLine.Y), z: toFloat(csvLine.Z), classification: toFloat(csvLine.Classification)})
 } IN TRANSACTIONS OF 10000 ROWS
 
+
+
+# Index the "Point" layer and run a query against it:
+
+### Run from below ###
+
+// Create a spatial layer for BNG
+CALL spatial.addLayer('romsey_bng_layer', 'POINT', 'EPSG:27700') YIELD name;
+
+// Create a spatial index for BNG 
+CREATE INDEX ON :YourNodeLabel(location:point({x:x, y:y}))
+USING spatial.geo
+OPTIONS({
+    "layer": "romsey_bng_layer" 
+});
+
+// Add existing nodes to the BNG spatial layer
+MATCH (n:Point)
+WITH collect(n) AS nodes
+CALL spatial.addNodes('romsey_bng_layer', nodes) YIELD count
+RETURN count;

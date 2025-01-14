@@ -1,0 +1,17 @@
+# Install neo4j-desktop from browser.
+
+### neo4j Spatial ###
+
+# Install maven 
+
+sudo apt install maven
+
+# Install repo
+
+https://github.com/neo4j-contrib/spatial.git
+
+# Install with maven
+
+# Add the following to your conf file:
+
+	dbms.security.procedures.unrestricted=jwt.security.*,spatial.*
