@@ -1,1 +1,3 @@
-pdal translate Romsey_SU3521_03082021_nadir_classified.las Romsey_SU3521_03082021_nadir_classified.txt --writers.text.keep_unspecified=false --writers.text.order=X,Y,Z,Classification
+pdal translate Romsey_SU3520_03082021_nadir_classified_wgs84.laz Romsey_SU3520_03082021_nadir_classified_wgs84.las --writers.las.scale_x=0.0000001 --writers.las.scale_y=0.0000001 --writers.las.scale_z=0.001
+
+pdal translate Romsey_SU3520_03082021_nadir_classified_wgs84.las Romsey_SU3520_03082021_nadir_classified_wgs84.txt --writers.text.keep_unspecified=false --writers.text.order=X:7,Y:7,Z:3,Classification:0 
